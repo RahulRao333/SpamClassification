@@ -33,7 +33,7 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
         data = [message]
-        vect = vectmodel1.fit_transform(data).toarray()
+        vect = vectmodel1.transform(data).toarray()
         my_prediction = model.predict(vect)
     output = my_prediction
     if output == 1:
