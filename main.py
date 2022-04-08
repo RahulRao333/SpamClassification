@@ -37,9 +37,9 @@ def predict():
         vect = vectmodel1.transform(data).toarray()
         my_prediction = model.predict(vect)
     output = my_prediction
-    if output == 1:
+    if output[0] == 1:
         return render_template('index2.html', prediction_text='Its a Spam Message')
-    if output == 0:
+    if output[0] == 0:
         return render_template('index2.html', prediction_text='Its not a Spam Message')
 
 
