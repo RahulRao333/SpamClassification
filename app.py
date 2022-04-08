@@ -14,8 +14,8 @@ def home():
 
 @app.route('/predict', methods=['GET','POST'])
 def predict():
-    int_features = request.form.get('message')
-    output=model.predict([int_features])
+    message = request.form.get('message')
+    output=model.predict(message)
     if output == 1:
         return render_template('index1.html', prediction_text='Its a Spam Message')
     if output == 0:
