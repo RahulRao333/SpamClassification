@@ -16,6 +16,7 @@ if __name__ == '__main__':
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 import pickle
 from flask import Flask, render_template, request, jsonify
+from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 
 app = Flask(__name__)
@@ -33,7 +34,8 @@ def predict():
     if request.method == 'POST':
         message = request.form['message']
         data = [message]
-        vect = vectmodel1.transform(data).toarray()
+        cv = CountVectorizer()
+        vect = cv.fit_transform(data).toarray()
         my_prediction = model.predict(vect)
     output = my_prediction
     if output == 1:
