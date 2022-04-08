@@ -34,8 +34,8 @@ def predict():
         message = request.form['message']
         data = [message]
         
-        vect = vectmodel1.(data).toarray()
-        my_prediction = model.vect
+        vect = vectmodel1.transform(data).toarray()
+        my_prediction = model.predict(vect)
     output = my_prediction
     if output == 1:
         return render_template('index2.html', prediction_text='Its a Spam Message')
