@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+   <h1>
+       Spam Message Detection System
+
+   </h1>
+      <form action="{{url_for('predict')}}" method="post">
+
+        <textarea  name="message" rows="4" cols="50" required="required"></textarea>
+
+
+          <button type="submit">Predict</button>
+      </form>
+
+    <br>
+    <br>
+    {{prediction_text}}
+</body>
+</html>
