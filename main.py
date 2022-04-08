@@ -17,6 +17,7 @@ if __name__ == '__main__':
 import pickle
 from flask import Flask, render_template, request, jsonify
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
 import numpy as np
 
 app = Flask(__name__)
