@@ -17,7 +17,7 @@ def predict():
     int_features = [request.form.get('message')]
 
     prediction = model.predict([int_features])
-    output = prediction[0]
+    output = prediction
     if output == 1:
         return render_template('index1.html', prediction_text='Its a Spam Message')
     if output == 0:
