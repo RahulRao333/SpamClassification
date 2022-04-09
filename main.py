@@ -17,10 +17,10 @@ if __name__ == '__main__':
 import pickle
 from flask import Flask, render_template, request, jsonify
 import numpy as np
-
+import joblib
 app = Flask(__name__)
-vectmodel1=pickle.load(open('vectorizer.pkl','rb'))
-model = pickle.load(open('spammodel.pkl', 'rb'))
+modelvect=joblib.load('countvectorizer.pkl')
+model=joblib.load('Multinomialspammodel.pkl')
 
 
 @app.route("/")
@@ -34,12 +34,12 @@ def predict():
         message = request.form['message']
         data = [message]
         
-        vect = vectmodel1.transform(data)
+        vect = modelvect.transform(data)
         my_prediction = model.predict(vect)
     output = my_prediction
-    if output[0] == 1:
+    if output == [1]:
         return render_template('index2.html', prediction_text='Its a Spam Message')
-    if output[0] == 0:
+    if output == [0]:
         return render_template('index2.html', prediction_text='Its not a Spam Message')
 
 
